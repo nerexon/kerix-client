@@ -1,6 +1,12 @@
 const { app, BrowserWindow } = require('electron/main')
 const path = require('node:path')
 
+async function load () {
+  return new Promise((resolve, reject) => {
+    resolve()
+  })
+}
+
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
@@ -12,10 +18,11 @@ function createWindow () {
   })
 
   win.removeMenu()
-  win.loadFile('app/index.html')
+  win.loadFile('app/loading.html')
+  //win.webContents.openDevTools()
 }
 
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   createWindow()
 
   app.on('activate', () => {
@@ -23,6 +30,8 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
+
+  await load()
 })
 
 app.on('window-all-closed', () => {

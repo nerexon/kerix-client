@@ -1,0 +1,21 @@
+:root {
+   --app-background-color: #2e2e2e;
+}
+
+body {
+   background-color: var(--app-background-color);
+}
+
+#nerexon_logo {
+   position: absolute;
+   bottom: 0;
+}
+
+#loading {
+   margin: 0;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: #fff;
+}
