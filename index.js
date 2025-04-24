@@ -17,6 +17,7 @@ function createWindow (config) {
     width: 800,
     height: 600,
     frame: config.frame,
+    title: "Kerix",
     webPreferences: {
       preload: path.join(__dirname, 'preload/preload.js')
     }
