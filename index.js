@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron/main')
-const path = require('node:path')
+const path = require('node:path');
 
 async function load () {
   return new Promise((resolve, reject) => {
@@ -7,31 +7,42 @@ async function load () {
   })
 }
 
-function createWindow () {
-  const win = new BrowserWindow({
+let win;
+
+function createWindow (config) {
+  if(!config.path) throw new Error("No path provided")
+  config.frame = config.frame !== null && config.frame !== undefined ? config.frame : true
+
+  win = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: config.frame,
     webPreferences: {
       preload: path.join(__dirname, 'preload/preload.js')
-    },
-    
+    }
   })
 
   win.removeMenu()
-  win.loadFile('app/loading.html')
+  win.loadFile(config.path)
   //win.webContents.openDevTools()
+  return win;
 }
 
 app.whenReady().then(async () => {
-  createWindow()
+  createWindow({path: "app/loading.html", frame: false})
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
+      createWindow({path: "app/loading.html", frame: false})
     }
   })
 
   await load()
+  setTimeout(() => {
+    win.close()
+    createWindow({path: "app/app.html"})
+  }, 4000)
+  
 })
 
 app.on('window-all-closed', () => {
