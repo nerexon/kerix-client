@@ -24,7 +24,6 @@ function createWindow (config) {
 
   win.removeMenu()
   win.loadFile(config.path)
-  //win.webContents.openDevTools()
   return win;
 }
 
@@ -41,6 +40,7 @@ app.whenReady().then(async () => {
   setTimeout(() => {
     win.close()
     createWindow({path: "app/app.html"})
+    win.webContents.openDevTools()
   }, 4000)
   
 })
