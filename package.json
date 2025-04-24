@@ -1,0 +1,22 @@
+{
+  "name": "kerix-client",
+  "version": "0.0.0",
+  "description": "The official client for Kerix",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerexon/kerix-client.git"
+  },
+  "author": "Alataq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nerexon/kerix-client/issues"
+  },
+  "homepage": "https://github.com/nerexon/kerix-client#readme",
+  "devDependencies": {
+    "electron": "^35.2.1"
+  }
+}
