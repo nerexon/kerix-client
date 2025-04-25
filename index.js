@@ -14,8 +14,8 @@ function createWindow (config) {
   config.frame = config.frame !== null && config.frame !== undefined ? config.frame : true
 
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: config.width || 800,
+    height: config.height || 600,
     frame: config.frame,
     title: "Kerix",
     webPreferences: {
@@ -29,7 +29,7 @@ function createWindow (config) {
 }
 
 app.whenReady().then(async () => {
-  createWindow({path: "app/loading.html", frame: false})
+  createWindow({path: "app/loading.html", frame: false, width: 550, height: 350})
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
