@@ -1,7 +1,16 @@
 :root {
    --app-background-color: #2e2e2e;
+   --server-icon-list-background-color: #3c3c3c;
 }
 
 body {
+   margin: 0;
+   padding: 0;
    background-color: var(--app-background-color);
+}
+
+#serverIconList {
+   width: 3vw;
+   height: 100vh;
+   background-color: var(--server-icon-list-background-color);
 }
