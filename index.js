@@ -42,6 +42,7 @@ app.whenReady().then(async () => {
     win.close()
     createWindow({path: "app/app.html"})
     win.webContents.openDevTools()
+    win.maximize()
   }, 4000)
   
 })
