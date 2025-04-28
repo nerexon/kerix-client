@@ -38,12 +38,10 @@ app.whenReady().then(async () => {
   })
 
   await load()
-  setTimeout(() => {
-    win.close()
-    createWindow({path: "app/app.html"})
-    win.webContents.openDevTools()
-    win.maximize()
-  }, 4000)
+  win.close()
+  createWindow({path: "app/app.html"})
+  win.webContents.openDevTools()
+  win.maximize()
   
 })
 
