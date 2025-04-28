@@ -1,16 +1,24 @@
 :root {
    --app-background-color: #2e2e2e;
-   --server-icon-list-background-color: #3c3c3c;
+   --server-list-background-color: #343434;
+   --channel-list-background-color: #2b2b2b;
 }
 
 body {
    margin: 0;
    padding: 0;
    background-color: var(--app-background-color);
+   display: inline-flex;
 }
 
-#serverIconList {
-   width: 3vw;
+#serverList {
+   width: 4vw;
    height: 100vh;
-   background-color: var(--server-icon-list-background-color);
+   background-color: var(--server-list-background-color);
+}
+
+#channelList {
+   width: 10vw;
+   height: 100vh;
+   background-color: var(--channel-list-background-color);
 }
