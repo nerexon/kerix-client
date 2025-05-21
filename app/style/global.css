@@ -13,13 +13,15 @@ body {
 }
 
 #serverList {
-   min-width: 4vw;
+   width: 4vw;
    height: 100vh;
+   min-width: 50px;
    background-color: var(--server-list-background-color);
 }
 
 #channelList {
-   min-width: 12vw;
+   width: 12vw;
    height: 100vh;
+   min-width: 120px;
    background-color: var(--channel-list-background-color);
 }
