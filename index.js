@@ -18,12 +18,12 @@ function createWindow (config) {
     height: config.height || 600,
     frame: config.frame,
     title: "Kerix",
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload/preload.js')
     }
   })
 
-  win.removeMenu()
   win.loadFile(config.path)
   return win;
 }
