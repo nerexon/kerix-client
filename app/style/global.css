@@ -176,11 +176,11 @@ body {
 /* Message display area */
 .chatMessages {
   flex: 1; /* Allow the messages section to expand */
-  padding: 12px;
   overflow-y: hidden; /* Hide vertical scroll */
-  background: var(--channel-list-bg);
   color: var(--text-color);
   margin: 0; /* Ensure no outside margin */
+  padding: 10px;
+  max-height: 400px;
 }
 
 /* Individual message */
