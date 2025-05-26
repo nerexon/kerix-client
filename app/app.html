@@ -13,7 +13,129 @@
       </div>
    </section>
    <section id="channelList">
-
+      <div class="channelHeader">
+         <h2>Server Name</h2>
+      </div>
+      <div class="channelButtons">
+         <button>Add Channel</button>
+         <button>Settings</button>
+      </div>
+      <div class="channelListContent">
+         <div class="category">
+            <h3>Category 1</h3>
+            <div class="channelItem" draggable="true"># General</div>
+            <div class="channelItem" draggable="true"># Random</div>
+         </div>
+         <div class="category">
+            <h3>Category 2</h3>
+            <div class="channelItem" draggable="true"># Music</div>
+            <div class="channelItem" draggable="true"># Gaming</div>
+         </div>
+      </div>
    </section>
+   <script>
+      const channelItems = document.querySelectorAll('.channelItem');
+      const categories = document.querySelectorAll('.category');
+   
+      // Enable dragging for channel items
+      channelItems.forEach(item => {
+         item.addEventListener('dragstart', () => {
+            item.classList.add('dragging');
+         });
+   
+         item.addEventListener('dragend', () => {
+            item.classList.remove('dragging');
+         });
+   
+         // Allow dropping on categories
+         item.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Allow dropping
+            const draggingItem = document.querySelector('.dragging');
+            if (draggingItem !== item) {
+               item.classList.add('over'); // Add visual feedback
+            }
+         });
+   
+         item.addEventListener('dragleave', () => {
+            item.classList.remove('over'); // Remove visual feedback
+         });
+   
+         item.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const draggingItem = document.querySelector('.dragging');
+            if (draggingItem && draggingItem !== item) {
+               const parentCategory = item.parentElement; // Get the parent category
+               parentCategory.insertBefore(draggingItem, item); // Move the channel item
+            }
+            item.classList.remove('over'); // Remove visual feedback
+         });
+      });
+   
+      // Enable dragging for categories
+      categories.forEach(category => {
+         category.setAttribute('draggable', 'true');
+   
+         category.addEventListener('dragstart', () => {
+            category.classList.add('dragging-category');
+         });
+   
+         category.addEventListener('dragend', () => {
+            category.classList.remove('dragging-category');
+         });
+   
+         // Allow dropping on the channel list
+         category.addEventListener('dragover', (e) => {
+            e.preventDefault(); // Allow dropping
+            const draggingCategory = document.querySelector('.dragging-category');
+            if (draggingCategory !== category) {
+               category.classList.add('over'); // Add visual feedback
+            }
+         });
+   
+         category.addEventListener('dragleave', () => {
+            category.classList.remove('over'); // Remove visual feedback
+         });
+   
+         category.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const draggingCategory = document.querySelector('.dragging-category');
+            if (draggingCategory && draggingCategory !== category) {
+               const channelListContent = document.querySelector('.channelListContent');
+               // Check if the dragging category is being dropped before or after the current category
+               if (category.nextElementSibling) {
+                  channelListContent.insertBefore(draggingCategory, category.nextElementSibling); // Move the category
+               } else {
+                  channelListContent.appendChild(draggingCategory); // Append to the end if it's the last category
+               }
+            }
+            category.classList.remove('over'); // Remove visual feedback
+         });
+      });
+   
+      // Handle dropping channel items at the top and bottom of the list
+      const channelListContent = document.querySelector('.channelListContent');
+      channelListContent.addEventListener('dragover', (e) => {
+         e.preventDefault(); // Allow dropping
+      });
+   
+      channelListContent.addEventListener('drop', (e) => {
+         e.preventDefault();
+         const draggingItem = document.querySelector('.dragging');
+         if (draggingItem) {
+            const firstChild = channelListContent.firstChild;
+            const lastChild = channelListContent.lastChild;
+   
+            // Check if the dragging item is being dropped at the top
+            if (e.clientY < firstChild.getBoundingClientRect().top + firstChild.offsetHeight / 2) {
+               channelListContent.insertBefore(draggingItem, firstChild);
+            } 
+            // Check if the dragging item is being dropped at the bottom
+            else if (e.clientY > lastChild.getBoundingClientRect().bottom - lastChild.offsetHeight / 2) {
+               channelListContent.appendChild(draggingItem);
+            } 
+            // If dropped in the middle, do nothing (handled by individual channel drop events)
+         }
+      });
+   </script>   
 </body>
 </html>
