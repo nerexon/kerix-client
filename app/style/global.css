@@ -25,3 +25,13 @@ body {
    min-width: 120px;
    background-color: var(--channel-list-background-color);
 }
+
+#serverList .serverIcon {
+   display: flex;
+   flex-direction: column;
+   margin: 5px 2px;
+}
+
+#serverList .serverIcon img{
+   width: 100%
+}
