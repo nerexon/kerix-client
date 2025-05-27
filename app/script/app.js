@@ -11,14 +11,15 @@ const data = {
         channels: [
           { id: "ch1", name: "# General" },
           { id: "ch2", name: "# Random" },
+          { id: "ch3", name: "# Test"}
         ],
       },
       {
         id: "cat2",
         name: "Category 2",
         channels: [
-          { id: "ch3", name: "# Music" },
-          { id: "ch4", name: "# Gaming" },
+          { id: "ch4", name: "# Music" },
+          { id: "ch5", name: "# Gaming" },
         ],
       },
     ],
