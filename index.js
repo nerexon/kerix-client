@@ -20,7 +20,7 @@ function createWindow (config) {
     title: "Kerix",
     autoHideMenuBar: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload/preload.js')
+      preload: config.preload ?? null
     }
   })
 
@@ -39,7 +39,7 @@ app.whenReady().then(async () => {
 
   await load()
   win.close()
-  createWindow({path: "app/app.html"})
+  createWindow({path: "app/app.html", preload: path.join(__dirname, 'preload/preload.js')})
   win.webContents.openDevTools()
   win.maximize()
   
