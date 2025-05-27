@@ -39,7 +39,7 @@ app.whenReady().then(async () => {
 
   await load()
   win.close()
-  createWindow({path: "app/app.html", preload: path.join(__dirname, 'preload/preload.js')})
+  createWindow({path: "app/app.html", preload: path.join(__dirname, 'preload/app_preload.js')})
   win.webContents.openDevTools()
   win.maximize()
   
