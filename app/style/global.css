@@ -33,27 +33,111 @@ body {
   position: relative;
 }
 
-/* Server list */
 #serverList {
-  flex: 0 0 5vw; /* Fixed width of server list */
-  min-width: 60px;
-  background: var(--server-list-bg);
-  border-right: 1px solid var(--border-color);
+  flex: 0 0 56px;
+  min-width: 56px;
+  background: var(--server-list-bg, #2b2d31);
+  border-right: 1px solid var(--border-color, #202225);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+/* Material Icon style fix */
+.material-icons {
+  font-size: 20px;
+  color: white;
+}
+
+/* DM Icon */
+.dmIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #5865f2;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Used to ensure full height */
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-#serverList .serverIcon img {
-  width: 90%;
+.dmIcon:hover {
+  background-color: #4752c4;
+}
+
+/* Separator */
+.serverSeparator {
+  width: 24px;
+  height: 1.5px;
+  background-color: #3a3c43;
+  border-radius: 1px;
+  margin: 6px 0;
+}
+
+/* Scrollable server icons */
+.serverIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.serverIcons::-webkit-scrollbar {
+  display: none;
+}
+
+.serverIcon,
+.addServerIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #2f3136;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.serverIcon:hover {
+  background-color: #5865f2;
+}
+
+.addServerIcon {
+  background-color: #3ba55d;
+  margin-bottom: 6px;
+}
+
+.addServerIcon:hover {
+  background-color: #2d7d46;
+}
+
+.serverIcon img,
+.addServerIcon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
   border-radius: 50%;
   transition: transform 0.2s;
 }
 
-#serverList .serverIcon:hover img {
+.serverIcon:hover img,
+.addServerIcon:hover img {
   transform: scale(1.1);
 }
+
 
 /* Channel list panel */
 #channelList {
